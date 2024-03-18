@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
+import './styles.css'
 
-const index = () => {
+interface Props {
+  children: ReactNode;
+  to: string;
+}
+
+const Link:FC<Props> = ({children, to, ...props}) => {
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    window.history.replaceState({},"",to)
+  }
+
   return (
-    <div>index</div>
+    <a onClick={handleClick} className='link' href={to} {...props}>
+      {children}
+    </a>
   )
 }
 
-export default index
+export default Link;
