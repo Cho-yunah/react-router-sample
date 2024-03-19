@@ -1,22 +1,33 @@
 import React from 'react';
 import Link from '../../components/Link';
+import Switch, { Route } from '../../utils/Switch';
+
+import Hello from '../Hello';
+import My123 from '../My123';
 
 
 function App() {
   return (
-    <div>
-      <h1>메인 화면</h1>
-      <Link to='/hi'>
-        페이지 전환 링크
-      </Link>
-    </div>
+
+      <>
+        <div>
+          <ul>
+            <li>
+              <Link to="/hello">Move to hello</Link>
+            </li>
+            <li>
+              <Link to="/my123">Move to my123</Link>
+            </li>
+          </ul>
+        </div>
+
+        <Switch>
+          <Route path="/hello" component={Hello} />
+          <Route path="/my123" component={My123} />
+        </Switch>
+      </>
+  
   )
-  // return (<Switch>
-  //   <Redirect exact path='/' to='/login' />
-  //   <Route  path='/login' component={Login}/>
-  //   <Route  path='/signup' component={Signup} />
-  //   <Route  path='/workspace/:workspace' component={Workspace} />
-  // </Switch>);
 }
 
 export default App;
